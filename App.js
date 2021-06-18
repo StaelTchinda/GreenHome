@@ -10,6 +10,8 @@ import {AnalyseScreen} from "./Screens/analyse.component";
 import {MainNavigator} from "./Screens/MainNavigator";
 import {SinglePost} from "./Screens/SinglePost";
 
+import { default as theme } from './assets/theme.json'; // <-- Import app theme
+import { StartForm } from './startform.component'
 
 const Stack = createStackNavigator();
 
@@ -28,6 +30,9 @@ export default () => (
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="MainArea" component={MainNavigator} />
           <Stack.Screen name="SinglePost" component={SinglePost} />
+          <Stack.Screen
+            name="StartForm"
+            component={StartForm} />
         </Stack.Navigator>
       </NavigationContainer>
     </ApplicationProvider>
