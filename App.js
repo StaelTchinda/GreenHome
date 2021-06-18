@@ -5,7 +5,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from './components/home.component'
-import { StartForm } from './Screens/startform.component'
+import { StartForm } from './components/startform.component'
 import { RatgeberScreen} from "./Screens/ratgeber.component";
 import {AnalyseScreen} from "./Screens/analyse.component";
 import {MainNavigator} from "./Screens/MainNavigator";
