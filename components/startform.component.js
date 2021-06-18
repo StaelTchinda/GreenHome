@@ -2,7 +2,7 @@ import React from 'react';
 // import { StyleSheet, ImageBackground } from 'react-native';
 import { useTheme } from '@ui-kitten/components';
 // import { QuestionComponent } from './singlequestion.component';
-import { FormComponent } from './form.component';
+import { FormComponent } from '../components/form.component';
 import { startQuestions, muellQuestions, lebensmittelQuestions, stromQuestions, wasserQuestions } from '../data/questions'
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -68,8 +68,6 @@ export const StartForm = () => {
 function StartFormComponent({route, navigation }) {
   const theme = useTheme();
 
-  console.warn('navigation', navigation, route);
-
   var color = theme['text-hint-color'];
 
   return customFormComponent('start', color, {route, navigation });
@@ -78,8 +76,6 @@ function StartFormComponent({route, navigation }) {
 function MuellFormComponent({route, navigation }) {
   const theme = useTheme();
 
-  console.warn('navigation', navigation, route);
-
   var color = theme['text-success-color'];
   return customFormComponent('muell', color, {route, navigation });
 }
@@ -87,15 +83,11 @@ function MuellFormComponent({route, navigation }) {
 function LebensmittelFormComponent({route, navigation }) {
   const theme = useTheme();
 
-  console.warn('navigation', navigation, route);
-
   var color = theme['text-danger-color'];
   return customFormComponent('lebensmittel', color, {route, navigation });
 }
 function StromFormComponent({route, navigation }) {
   const theme = useTheme();
-
-  console.warn('navigation', navigation, route);
 
   var color = theme['text-warning-color'];
   return customFormComponent('strom', color, {route, navigation });
@@ -104,22 +96,20 @@ function StromFormComponent({route, navigation }) {
 function WasserFormComponent({route, navigation }) {
   const theme = useTheme();
 
-  console.warn('navigation', navigation, route);
-
   var color = theme['text-info-color'];
   return customFormComponent('wasser', color, {route, navigation });
 }
 
 
 function customFormComponent(keyword, color, {route, navigation }) {
-  console.warn('workflow', workflow, keyword);
+  // console.warn('workflow', workflow, keyword);
     return (
         <FormComponent
           questions={workflow[keyword].questions}
           title={workflow[keyword].title}
           titleColor={color}
           callback= { (result) => { 
-            console.warn(result);
+            // console.warn(result);
             if (keyword=='start' && !workflow[keyword].isDone) {
               const selectedAreas = workflow[keyword].questions[1].answer;
 
@@ -137,7 +127,7 @@ function customFormComponent(keyword, color, {route, navigation }) {
             if (nextPath) {
               navigation.push(nextPath);
             } else {
-              navigation.navigate('Home');
+              navigation.navigate('MainArea');
             }
           } }
         >

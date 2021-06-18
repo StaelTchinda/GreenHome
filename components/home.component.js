@@ -12,8 +12,9 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     borderRadius: 200,
-    padding: 30, 
-    marginBottom: 20
+    // backgroundColor: '#fff',
+    padding: 30,
+    marginBottom: 10
   },
   logo: {
     width: 130,
@@ -34,10 +35,10 @@ export function HomeScreen({ navigation }) {
         />
       </Layout>
       <Text status='success' category='h1' style={{marginBottom: 80}}>Green Home</Text>
-      <Button 
-        status="info" 
-        size="large" 
-        onPress={() => navigation.navigate('StartForm', {screen: "Muell"})}>
+      <Button
+        status="info"
+        size="large"
+        onPress={() => navigation.navigate('StartForm')}>
           Let's start
       </Button>
     </Layout>
