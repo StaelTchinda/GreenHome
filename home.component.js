@@ -3,7 +3,6 @@ import { Image } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 import { StyleSheet } from "react-native";
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -13,7 +12,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     borderRadius: 200,
     backgroundColor: '#fff',
-    padding: 30, 
+    padding: 30,
     marginBottom: 10
   },
   logo: {
@@ -41,11 +40,10 @@ export function HomeScreen({ navigation }) {
         />
       </Layout>
       <Text status='success' category='h1'>Green Home</Text>
-      <Button  onPress={() => navigation.navigate('StartForm')}>Let's start</Button>
+      <Button  onPress={() => navigation.navigate('MainArea')}>Let's start</Button>
     </Layout>
   );
 }
-
 
 // import React from 'react';
 // import { SafeAreaView } from 'react-native';
@@ -62,7 +60,7 @@ export function HomeScreen({ navigation }) {
 //   imageContainer: {
 //     borderRadius: 200,
 //     backgroundColor: '#fff',
-//     padding: 30, 
+//     padding: 30,
 //     marginBottom: 10
 //   },
 //   logo: {

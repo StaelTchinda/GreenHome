@@ -5,6 +5,10 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from './home.component'
+import { RatgeberScreen} from "./Screens/ratgeber.component";
+import {AnalyseScreen} from "./Screens/analyse.component";
+import {MainNavigator} from "./Screens/MainNavigator";
+import {SinglePost} from "./Screens/SinglePost";
 
 
 const Stack = createStackNavigator();
@@ -14,14 +18,16 @@ const Stack = createStackNavigator();
 export default () => (
   <>
     <IconRegistry icons={EvaIconsPack}/>
-    <ApplicationProvider {...eva} theme={eva.dark}>
+    <ApplicationProvider {...eva} theme={eva.light}>
       <NavigationContainer>
-        <Stack.Navigator 
+        <Stack.Navigator
         screenOptions={({ route, navigation }) => ({
           headerShown: false,
         })}
         >
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="MainArea" component={MainNavigator} />
+          <Stack.Screen name="SinglePost" component={SinglePost} />
         </Stack.Navigator>
       </NavigationContainer>
     </ApplicationProvider>
