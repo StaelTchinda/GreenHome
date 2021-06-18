@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     borderRadius: 200,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     padding: 30,
     marginBottom: 10
   },
@@ -31,7 +31,7 @@ export function HomeScreen({ navigation }) {
       <Layout style={styles.imageContainer}>
         <Image
           style={styles.logo}
-          source={ require('./assets/logo.png') }
+          source={ require('../assets/logo.png') }
         />
       </Layout>
       <Text status='success' category='h1' style={{marginBottom: 80}}>Green Home</Text>

@@ -51,7 +51,7 @@ export const startQuestions = [
         label:'Strom sparen',
       },
     ],
-    answer:null
+    answer:['', '', '', '']
   }
 ];
 
@@ -129,16 +129,16 @@ function frequencyQuestion(label, frequency=null) {
 function yesNoQuestion(label) {
   var possibleAnswers = [
     {
-      label:'ja',
-      value:'Ja'
+      value:'ja',
+      label:'Ja'
     },
     {
-      label:'nein',
-      value:'Nein'
+      value:'nein',
+      label:'Nein'
     }
   ];
   return {
-    label:'label',
+    label:label,
     type:"SingleChoice",
     possibleAnswers: possibleAnswers,
     answer:null

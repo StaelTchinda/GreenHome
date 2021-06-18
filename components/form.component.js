@@ -1,14 +1,13 @@
 import React from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
-import { Layout, ViewPager } from '@ui-kitten/components';
+import { Layout, ViewPager, Text } from '@ui-kitten/components';
 import { QuestionComponent } from './singlequestion.component';
-import { startQuestions, muellQuestions } from './data/questions'
 
 
-export const StartForm = () => {
+export const FormComponent = (props) => {
 
   var questionComponents = [];
-  var questions = startQuestions.concat(muellQuestions);
+  var questions = props.questions;
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -21,12 +20,13 @@ export const StartForm = () => {
       <Layout
       style={styles.tab}
       level='2' 
-      key={i}>
+      key={'Question_' + props.title + '_' +(i+1) }>
         <QuestionComponent 
           questionIndex={i+1}
           questionNumber={questions.length}
           question={question}
           selectedIndex={selectedIndex}
+          callback={() => props.callback(props.questions)}
           setSelectedIndex={setSelectedIndex}
           >
         </QuestionComponent>
@@ -34,11 +34,27 @@ export const StartForm = () => {
     )
   }
 
+  const textStyles = StyleSheet.create({
+    title: {
+      color: props.titleColor,
+      fontSize: 20,
+      paddingTop: 30,
+      paddingLeft: 30,
+      marginBottom: -60, // HARDCODED
+      backgroundColor: 'transparent',
+      fontWeight: '800',
+      // flex: 2
+    }
+  });
 
+  // console.warn('props & navigation to FormComponent', props)
 
   return (
     <Layout style={styles.container}>
-      <ImageBackground source={ require('./assets/pageBg.png') } style={styles.bg}>
+      <ImageBackground source={ require('../assets/pageBg.png') } style={styles.bg}>
+        <Text style={textStyles.title}>
+          {props.title}
+        </Text>
         <ViewPager
           selectedIndex={selectedIndex}
           shouldLoadComponent={shouldLoadComponent}
@@ -54,19 +70,20 @@ export const StartForm = () => {
 const styles = StyleSheet.create({
   tab: {
     height: '100%',
-    alignItems: 'stretch',
+    // alignItems: 'stretch',
     justifyContent: 'flex-start',
     backgroundColor: 'transparent'
   },
   container: {
     flex: 1,
     flexDirection: "column",
-    height: '100%'
+    // height: '100%'
   },
   bg: {
     flex: 1,
+    display: 'flex',
     resizeMode: "cover",
-    height: '100%'
+    // height: '100%'
     // justifyContent: "center"
   }
 });
