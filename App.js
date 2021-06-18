@@ -5,7 +5,8 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from './home.component'
-
+import { default as theme } from './assets/theme.json'; // <-- Import app theme
+import { StartForm } from './startform.component'
 
 const Stack = createStackNavigator();
 
@@ -14,7 +15,7 @@ const Stack = createStackNavigator();
 export default () => (
   <>
     <IconRegistry icons={EvaIconsPack}/>
-    <ApplicationProvider {...eva} theme={eva.dark}>
+    <ApplicationProvider {...eva} theme={{...eva.light, ...theme}}>
       <NavigationContainer>
         <Stack.Navigator 
         screenOptions={({ route, navigation }) => ({
@@ -22,6 +23,9 @@ export default () => (
         })}
         >
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen 
+            name="StartForm" 
+            component={StartForm} />
         </Stack.Navigator>
       </NavigationContainer>
     </ApplicationProvider>

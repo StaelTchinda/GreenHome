@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Image } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+import { Button, Layout, Text, useTheme } from '@ui-kitten/components';
 import { StyleSheet } from "react-native";
 
 
@@ -8,13 +8,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   imageContainer: {
     borderRadius: 200,
-    backgroundColor: '#fff',
     padding: 30, 
-    marginBottom: 10
+    marginBottom: 20
   },
   logo: {
     width: 130,
@@ -24,74 +23,23 @@ const styles = StyleSheet.create({
 });
 
 export function HomeScreen({ navigation }) {
-  return (
-    // <Layout style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //   <Text>Home Screen</Text>
-    //   <Button
-    //     title="Go to Details"
-    //     onPress={() => navigation.navigate('Details')}
-    //   />
+  const theme = useTheme();
 
-    // </Layout>
-    <Layout style={styles.container}>
+  return (
+    <Layout style={[styles.container, { backgroundColor: theme['color-primary-default'] }]}>
       <Layout style={styles.imageContainer}>
         <Image
           style={styles.logo}
           source={ require('./assets/logo.png') }
         />
       </Layout>
-      <Text status='success' category='h1'>Green Home</Text>
-      <Button  onPress={() => navigation.navigate('StartForm')}>Let's start</Button>
+      <Text status='success' category='h1' style={{marginBottom: 80}}>Green Home</Text>
+      <Button 
+        status="info" 
+        size="large" 
+        onPress={() => navigation.navigate('StartForm')}>
+          Let's start
+      </Button>
     </Layout>
   );
 }
-
-
-// import React from 'react';
-// import { SafeAreaView } from 'react-native';
-// import { Button, Divider, Image, Layout, Text, TopNavigation } from '@ui-kitten/components';
-// import { StyleSheet } from "react-native";
-
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   imageContainer: {
-//     borderRadius: 200,
-//     backgroundColor: '#fff',
-//     padding: 30, 
-//     marginBottom: 10
-//   },
-//   logo: {
-//     width: 130,
-//     height: 130,
-//     resizeMode: 'center',
-//   }
-// });
-
-// export const HomeScreen = ({ navigation }) => {
-
-//   const navigateStartForm = () => {
-//     navigation.navigate('StartForm');
-//   };
-
-//   return (
-//     <SafeAreaView style={{ flex: 1 }}>
-//       <TopNavigation title='MyApp' alignment='center'/>
-//       <Divider/>
-//       <Layout style={styles.container}>
-//         <Layout style={styles.imageContainer}>
-//           <Image
-//             style={styles.logo}
-//             source={ require('./assets/logo.png') }
-//           />
-//         </Layout>
-//         <Text status='success' category='h1'>Green Home</Text>
-//       </Layout>
-//       <Button onPress={navigateStartForm}>Let's start</Button>
-//     </SafeAreaView>
-//   );
-// }
