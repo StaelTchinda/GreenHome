@@ -9,7 +9,7 @@ import {AnalyseScreen} from "./analyse.component";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-const BottomTabBar = ({navigation, state}) => {
+const BottomTabBar = ({route, navigation, state}) => {
     return (
         <BottomNavigation
             selectedIndex={state.index}
@@ -22,7 +22,7 @@ const BottomTabBar = ({navigation, state}) => {
         )
 }
 
-const TabNavigator = () => {
+const TabNavigator = (props) => {
     return (
         <Navigator tabBar={props => <BottomTabBar {...props} />}>
             <Screen name="Ratgeber" component={RatgeberScreen} />
@@ -31,8 +31,8 @@ const TabNavigator = () => {
         )
 }
 
-export function MainNavigator({ navigation }) {
+export function MainNavigator({ route, navigation }) {
     return (
-        <TabNavigator />
+        <TabNavigator data={route}/>
     )
 }

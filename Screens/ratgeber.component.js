@@ -6,7 +6,7 @@ import {DefaultHeader} from "../components/DefaultHeader";
 import {RatgeberShowcase} from "../components/RatgeberShowcase";
 import {RatgeberSingle} from "../components/RatgeberSingle";
 import {ScrollView} from "react-native";
-import global from '../state/global';
+import global from '../data/global';
 import {TabBar} from "../components/TabBar";
 
 const styles = StyleSheet.create({
@@ -442,10 +442,9 @@ const contentJson = {
             "content": "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer"
         }
     ]
-
 }
 
-export function RatgeberScreen({ navigation }) {
+export function RatgeberScreen({route, navigation }) {
 
     return (
         <ScrollView style={styles.container}>
@@ -459,7 +458,7 @@ export function RatgeberScreen({ navigation }) {
             </View>
 
             {
-                userData.interests.includes("trash") ?
+                global.data["muell"].isSelected ?
                     <View style={styles.topicContent}>
                         <Text style={styles.h2}>
                             Müll reduzieren & trennen
@@ -475,7 +474,7 @@ export function RatgeberScreen({ navigation }) {
             }
 
             {
-                userData.interests.includes("water") ?
+                global.data["wasser"].isSelected ?
                     <View style={styles.topicContent}>
                         <Text style={styles.h2}>
                             Wasserverbrauch mindern
@@ -491,7 +490,7 @@ export function RatgeberScreen({ navigation }) {
             }
 
             {
-                userData.interests.includes("food") ?
+                global.data["lebensmittel"].isSelected ?
                     <View style={styles.topicContent}>
                         <Text style={styles.h2}>
                             Lebensmittelverschwendung reduzieren
@@ -507,7 +506,7 @@ export function RatgeberScreen({ navigation }) {
             }
 
             {
-                userData.interests.includes("electricity") ?
+                global.data["strom"].isSelected ?
                     <View style={styles.topicContent}>
                         <Text style={styles.h2}>
                             Lebensmittelverschwendung reduzieren

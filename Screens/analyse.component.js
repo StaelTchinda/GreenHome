@@ -6,7 +6,7 @@ import {DefaultHeader} from "../components/DefaultHeader";
 import {RatgeberShowcase} from "../components/RatgeberShowcase";
 import {RatgeberSingle} from "../components/RatgeberSingle";
 import {ScrollView} from "react-native";
-import global from '../state/global';
+import global from '../data/global';
 import {TabBar} from "../components/TabBar";
 
 const styles = StyleSheet.create({

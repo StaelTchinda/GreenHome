@@ -38,7 +38,7 @@ export function HomeScreen({ navigation }) {
       <Button
         status="info"
         size="large"
-        onPress={() => navigation.navigate('MainArea')}>
+        onPress={() => navigation.navigate('StartForm')}>
           Let's start
       </Button>
     </Layout>

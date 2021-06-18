@@ -5,6 +5,7 @@ import { useTheme } from '@ui-kitten/components';
 import { FormComponent } from '../components/form.component';
 import { startQuestions, muellQuestions, lebensmittelQuestions, stromQuestions, wasserQuestions } from '../data/questions'
 import { createStackNavigator } from '@react-navigation/stack';
+import global from '../data/global';
 
 const Stack = createStackNavigator();
 
@@ -118,9 +119,7 @@ function customFormComponent(keyword, color, {route, navigation }) {
                 if(area in workflow) {
                   workflow[area].isSelected = true;
                 }
-                
               }
-              
             }
             workflow[keyword].isDone = true;
             var nextPath = getNextPath();
@@ -128,6 +127,7 @@ function customFormComponent(keyword, color, {route, navigation }) {
               navigation.push(nextPath);
             } else {
               navigation.navigate('MainArea');
+              global.data = workflow;
             }
           } }
         >

@@ -1,7 +1,7 @@
 import {View, StyleSheet, Image, Text} from "react-native";
 import * as React from "react";
 import {BottomNavigation, BottomNavigationTab} from "@ui-kitten/components";
-import global from "../state/global";
+import global from "../data/global";
 
 export function TabBar (props, {navigation}) {
 
