@@ -45,7 +45,7 @@ const initWorkflow = {
 var workflow = initWorkflow;
 const keywords = ['start', 'muell', 'lebensmittel', 'strom', 'wasser'];
 
-export const StartForm = () => {
+export const StartFormScreen = () => {
 
   workflow = initWorkflow;
 

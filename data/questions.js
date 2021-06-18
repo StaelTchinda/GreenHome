@@ -96,7 +96,7 @@ function muellQuestion(trash, correctBin) {
   };
 }
 
-function frequencyQuestion(label, frequency=null) {
+function frequencyQuestion(label, frequency=null, unknown=true) {
   var possibleAnswers = [
     {
       value:'1_2',
@@ -113,8 +113,16 @@ function frequencyQuestion(label, frequency=null) {
     {
       value:'7',
       label:'7+'
-    }
+    },
   ];
+  if(unknown) {
+    possibleAnswers.push(
+      {
+        value: 'unknown',
+        label:'Weiß nicht',
+      }
+    )
+  }
   if(frequency!=null) {
     // TODO: update possible Answers
   }
@@ -126,7 +134,7 @@ function frequencyQuestion(label, frequency=null) {
   }
 }
 
-function yesNoQuestion(label) {
+function yesNoQuestion(label, unknown=true) {
   var possibleAnswers = [
     {
       value:'ja',
@@ -137,6 +145,14 @@ function yesNoQuestion(label) {
       label:'Nein'
     }
   ];
+  if(unknown) {
+    possibleAnswers.push(
+      {
+        value: 'unknown',
+        label:'Weiß nicht',
+      }
+    )
+  }
   return {
     label:label,
     type:"SingleChoice",
@@ -146,22 +162,82 @@ function yesNoQuestion(label) {
 }
 
 export const muellQuestions = [
-  muellQuestion('einer Bananenschal', 'bio'),
-  muellQuestion('Eierschale', 'bio'),
+  muellQuestion('ein Arzneimittelblister', 'gelb'),
+  muellQuestion('das Backpapier', 'rest'),
   frequencyQuestion('Wie oft ist dein Plastikmüll pro Monat du in einem Haus oder einer Wohnung?')
 ];
 
 export const lebensmittelQuestions = [
-  frequencyQuestion('Wie oft verwendet du übrige Lebensmittel am nächsten Tag?'),
+  frequencyQuestion('Wie viel Strom verbrauchst du (in kWh)?', 
+    [{
+      label: '0-4 Tage',
+      value: 'low'
+    }, 
+    {
+      label:'5-13 Tage',
+      value: 'average'
+    }, {
+      label: '14-30 Tage',
+      value: 'high'
+    }]
+  ),
   frequencyQuestion('Wie oft ist deine Restmüll-/Bio-Tonne pro Woche voll?')
 ];
 
 export const stromQuestions = [
   yesNoQuestion('Beziehst du Öko-Strom?'),
-  frequencyQuestion('Wie viel Strom verbrauchst du ?')
+  frequencyQuestion('Wie viel Strom verbrauchst du (in kWh)?', 
+    [{
+      label: '0-1600',
+      value: 'low'
+    }, 
+    {
+      label:'1700-2300',
+      value: 'average'
+    }, {
+      label: '2400-2600',
+      value: 'high'
+    }]
+  ),
+  frequencyQuestion('Wie viel deiner Geräte haben einen Ökomodus?')
 ];
 
 export const wasserQuestions = [
-  frequencyQuestion('Welche der folgenden Geräte besitzt du? (Waschmaschine, Spülmaschine, Trockner etc.)'),
-  frequencyQuestion('Wie viel Wasser verbrauchst du ?')
+  frequencyQuestion(),
+  {
+    label:'Welche der folgenden Geräte besitzt du? (Waschmaschine, Spülmaschine, Trockner etc.)',
+    type:"MultipleChoice",
+    possibleAnswers: [
+      {
+        label:'Waschmaschine',
+        value:'waschmaschine',
+      },
+      {
+        label:'Spülmaschine',
+        value:'spuelmaschine',
+      },
+      {
+        label:'Badewanne',
+        value:'badewanne',
+      },
+      {
+        label:'Trockner',
+        value:'trockner',
+      }
+    ],
+    answer:['', '', '', '']
+  },
+  frequencyQuestion('Wie viel Wasser verbrauchst du (L)?', 
+  [{
+    label: '0-1600',
+    value: 'low'
+  }, 
+  {
+    label:'1700-2300',
+    value: 'average'
+  }, {
+    label: '2400-2600',
+    value: 'high'
+  }]
+),
 ];

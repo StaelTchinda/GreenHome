@@ -4,8 +4,8 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from './components/home.component'
-import { StartForm } from './Screens/startform.component'
+import { HomeScreen } from './Screens/HomeScreen'
+import { StartForm } from './Screens/StartFormScreen'
 import { RatgeberScreen} from "./Screens/ratgeber.component";
 import {AnalyseScreen} from "./Screens/analyse.component";
 import {MainNavigator} from "./Screens/MainNavigator";
@@ -32,7 +32,7 @@ export default () => (
           <Stack.Screen name="SinglePost" component={SinglePost} />
           <Stack.Screen
             name="StartForm"
-            component={StartForm} />
+            component={StartFormScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ApplicationProvider>
