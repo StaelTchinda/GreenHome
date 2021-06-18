@@ -53,6 +53,39 @@ const styles = StyleSheet.create({
     }
 });
 
+const contentJson = {
+    title: "Anfänger",
+    titleUrl: "https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500&w=1000",
+    content: [
+        {
+            "type": "paragraph",
+            "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+        },
+        {
+            "type": "paragraph",
+            "content": "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   \n"
+        },
+        {
+            "type": "CTA",
+            "linkUrl": "https://amazon.com",
+            "manufacturer": "Philips",
+            "productName": "Bio-degradable Filterkapseln",
+            "productImageUrl": "https://XXX.com/blubs.png",
+            "oldPrice": 9.99,
+            "newPrice": 6.99,
+            "amount": "24 Stck."
+        },
+        {
+            "type": "paragraph",
+            "content": "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+        },
+        {
+            "type": "paragraph",
+            "content": "Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer"
+        }
+    ]
+}
+
 export function AnalyseScreen({navigation}) {
     return (
         <ScrollView style={styles.container}>
@@ -62,24 +95,14 @@ export function AnalyseScreen({navigation}) {
                 <Text style={styles.h2}>
                     Müll trennen & reduzieren
                 </Text>
-                <RatgeberShowcase headline={"Anfänger"}
-                                  imageUrl={"https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500&w=1000"}/>
+                <RatgeberShowcase data={contentJson}/>
             </View>
 
             <View style={styles.showcaseContainer}>
                 <Text style={styles.h2}>
                     Wasser sparen
                 </Text>
-                <RatgeberShowcase headline={"Anfänger"}
-                                  imageUrl={"https://images.pexels.com/photos/861414/pexels-photo-861414.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500&w=1000"}/>
-            </View>
-
-            <View style={styles.showcaseContainer}>
-                <Text style={styles.h2}>
-                    Strom sparen
-                </Text>
-                <RatgeberShowcase headline={"Anfänger"}
-                                  imageUrl={"https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500&w=1000"}/>
+                <RatgeberShowcase data={contentJson}/>
             </View>
         </ScrollView>
     )
