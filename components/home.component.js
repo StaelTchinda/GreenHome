@@ -30,14 +30,14 @@ export function HomeScreen({ navigation }) {
       <Layout style={styles.imageContainer}>
         <Image
           style={styles.logo}
-          source={ require('./assets/logo.png') }
+          source={ require('../assets/logo.png') }
         />
       </Layout>
       <Text status='success' category='h1' style={{marginBottom: 80}}>Green Home</Text>
       <Button 
         status="info" 
         size="large" 
-        onPress={() => navigation.navigate('StartForm')}>
+        onPress={() => navigation.navigate('StartForm', {screen: "Muell"})}>
           Let's start
       </Button>
     </Layout>

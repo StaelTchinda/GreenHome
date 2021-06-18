@@ -5,12 +5,12 @@ import { ImageBackground, StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     flexDirection: "column",
     backgroundColor: 'transparent',
   },
   questionContainer: {
-    paddingTop: 60,
+    paddingTop: 70, // HARDCODED
     paddingLeft: 30,
     marginBottom: 10,
     backgroundColor: 'transparent',
@@ -47,18 +47,21 @@ const styles = StyleSheet.create({
   }
 });
 
-export const QuestionComponent = (props, { navigation }) => { 
+export const QuestionComponent = (props) => { 
   if(!checkQuestion(props.question)) {
     console.warn('Incorrect question format got from props', props);
     return (<Layout></Layout>);
   }
 
-
   var answersBlock = buildAnswersBlock(props.question);
   
   var next = () => {
     // console.warn("SelectedIndex", props.selectedIndex);
-    props.setSelectedIndex(props.selectedIndex+1);
+    if (props.questionIndex < props.questionNumber) {
+      props.setSelectedIndex(props.selectedIndex+1);      
+    } else if('callback' in props) {
+      props.callback();
+    }
   }
 
   return (
@@ -99,8 +102,8 @@ function buildAnswersBlock(question) {
     case "MultipleChoice":
       return (
         <MultipleChoiceAnswersBlock 
-        answers = {possibleAnswers}
-        question = {question}
+          answers = {possibleAnswers}
+          question = {question}
         >
         </MultipleChoiceAnswersBlock>
       )
@@ -197,6 +200,7 @@ export const SingleChoiceAnswersBlock = (props) => {
       <Button 
         onPress={ () => {
           setAnswer(ans.value); 
+          props.question.answer = ans.value;
           // console.warn('Clicked', ans.value, answer); 
         } } 
         style={ (answer==ans.value) ? answerStyles.answerButtonClicked : answerStyles.answerButton} 
@@ -268,21 +272,36 @@ export const MultipleChoiceAnswersBlock = (props) => {
       color: color,
     }
   });
-  props.question['answer'] = [];
+
+  var updateAnswer = (answer, index, isChecked) => {
+    var copy = new Array(props.answers.length);
+    for (let i = 0; i < copy.length; i++) {
+      if(i==index) {
+        answer[i] = (isChecked) ? props.answers[i].value : '';
+      } else {
+        answer[i] = answer[i];
+      }
+    }
+
+    return answer;
+  }
+
+  var booleanAnswers = new Array<Boolean>(props.answers.length);
 
   for (let i = 0; i < props.answers.length; i++) {
-    var answer = props.answers[i];
-    const [activeChecked, setActiveChecked] = React.useState(false);
-    props.question['answer'].push(false);
+    const [activeChecked, setActiveChecked] = React.useState(booleanAnswers[i]);
 
     myloop.push(
       <CheckBox
         checked={activeChecked}
-        onChange={nextChecked => {setActiveChecked(nextChecked); props.question['answer'][i]=nextChecked; } }
+        onChange={nextChecked => {
+          setActiveChecked(nextChecked); 
+          props.question.answer = updateAnswer(props.question.answer, i, nextChecked); 
+        } }
         style={ (activeChecked) ? answerStyles.answerCheckedBox : answerStyles.answerCheckBox} 
         key={i}
         >
-          {answer.label}
+          {props.answers[i].label}
       </CheckBox>
     );
   }

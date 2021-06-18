@@ -4,9 +4,9 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from './home.component'
+import { HomeScreen } from './components/home.component'
 import { default as theme } from './assets/theme.json'; // <-- Import app theme
-import { StartForm } from './startform.component'
+import { StartForm } from './components/startform.component'
 
 const Stack = createStackNavigator();
 
